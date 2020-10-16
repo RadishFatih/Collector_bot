@@ -6,7 +6,7 @@ import os
 
 
 def get_prefix(ctx, message: discord.Message):
-    """Gets prefix for each defined server"""
+    """ Gets prefix for each defined server """
 
     with open("./config/prefixes.json", "r") as f:
         prefixes = json.load(f)
@@ -19,6 +19,7 @@ bot = commands.Bot(command_prefix=get_prefix)
 
 
 def read_token():
+    """ Reads bot token from token.txt file """
 
     with open(f"./token.txt", "r") as f:
         lines = f.readlines()

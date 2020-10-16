@@ -9,6 +9,12 @@ class Prefixes(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild: discord.Guild):
+        """ Adds entry to json file after joining to server.
+
+        Parameters
+        ----------
+        guild : discord.Guild
+        """
         with open("./config/prefixes.json", "r") as f:
             prefixes = json.load(f)
 
@@ -19,6 +25,12 @@ class Prefixes(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_remove(self, guild: discord.Guild):
+        """ Removes entry from json file after leaving server.
+
+        Parameters
+        ----------
+        guild : discord.Guild
+        """
         with open("./config/prefixes.json", "r") as f:
             prefixes = json.load(f)
 
@@ -30,7 +42,15 @@ class Prefixes(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def prefix(self, ctx, pref):
-        """Changes prefix"""
+        """ Changes prefix
+
+        Parameters
+        ----------
+        ctx : discord.Context
+
+        pref : string
+            String with prefered prefix
+        """
         with open("./config/prefixes.json", "r") as f:
             prefixes = json.load(f)
 
