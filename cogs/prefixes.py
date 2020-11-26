@@ -4,12 +4,12 @@ import json
 
 
 class Prefixes(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot :discord):
         self.bot = bot
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild: discord.Guild):
-        """ Adds entry to json file after joining to server.
+        """Adds entry to json file after joining to server.
 
         Parameters
         ----------
@@ -25,7 +25,7 @@ class Prefixes(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_remove(self, guild: discord.Guild):
-        """ Removes entry from json file after leaving server.
+        """Removes entry from json file after leaving server.
 
         Parameters
         ----------
@@ -42,7 +42,7 @@ class Prefixes(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def prefix(self, ctx, pref):
-        """ Changes prefix
+        """Changes prefix
 
         Parameters
         ----------
@@ -62,3 +62,5 @@ class Prefixes(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Prefixes(bot))
+
+
