@@ -24,37 +24,75 @@ class Attachments(commands.Cog):
         att = len(message.attachments)
         if att > 0:
             for x in range(att):
-                try:
-                    async with aiohttp.ClientSession() as session:
 
-                        # file url
-                        url = message.attachments[x].url
-
-                        # file name
-                        name = message.attachments[x].filename[:-4]
-
-                        # file format
-                        file_format = message.attachments[x].filename[-4:]
-
-                        async with session.get(url) as resp:
-                            if resp.status == 200:
-                                """ Adds time stamp to file name to prevent overwriting files with same name"""
-                                now = dt.now()
-                                dt_string = now.strftime("%d%m%Y%H%M%S%f")
-                                f = await aiofiles.open(
-                                    f"files/{name}_{dt_string}{file_format}",
-                                    mode="wb",
-                                )
-                                await f.write(await resp.read())
-                                await f.close()
                     if str(message.channel) == "na-puste-pytania":
                         await message.add_reaction(emoji="✔️")
                         await message.add_reaction(emoji="❌")
                         await message.add_reaction(emoji="⏭️")
 
-                except:
-                    channel = message.channel
-                    await channel.send("Unexpected error")
+                        try:
+                            async with aiohttp.ClientSession() as session:
+
+                                # file url
+                                url = message.attachments[x].url
+
+                                # file name
+                                name = message.attachments[x].filename[:-4]
+
+                                # file format
+                                file_format = message.attachments[x].filename[-4:]
+
+                                async with session.get(url) as resp:
+                                    if resp.status == 200:
+                                        """ Adds time stamp to file name to prevent overwriting files with same name"""
+                                        now = dt.now()
+                                        dt_string = now.strftime("%d%m%Y%H%M%S%f")
+                                        f = await aiofiles.open(
+                                            f"files/Air2k18/{name}_{dt_string}{file_format}",
+                                            mode="wb",
+                                        )
+                                        await f.write(await resp.read())
+                                        await f.close()
+
+                        except:
+                            channel = message.channel
+                            await channel.send("Unexpected error", delete_after=10)
+
+                    if str(message.channel) == "kolokwium-02-12":
+                        await message.add_reaction(emoji="🇦")
+                        await message.add_reaction(emoji="🇧")
+                        await message.add_reaction(emoji="🇨")
+                        await message.add_reaction(emoji="🇩")
+                        await message.add_reaction(emoji="🇪")
+                        await message.add_reaction(emoji="🇫")
+
+                        try:
+                            async with aiohttp.ClientSession() as session:
+
+                                # file url
+                                url = message.attachments[x].url
+
+                                # file name
+                                name = message.attachments[x].filename[:-4]
+
+                                # file format
+                                file_format = message.attachments[x].filename[-4:]
+
+                                async with session.get(url) as resp:
+                                    if resp.status == 200:
+                                        """ Adds time stamp to file name to prevent overwriting files with same name"""
+                                        now = dt.now()
+                                        dt_string = now.strftime("%d%m%Y%H%M%S%f")
+                                        f = await aiofiles.open(
+                                            f"files/Brzeski/{name}_{dt_string}{file_format}",
+                                            mode="wb",
+                                        )
+                                        await f.write(await resp.read())
+                                        await f.close()
+                        except:
+                            channel = message.channel
+                            await channel.send("Unexpected error", delete_after=10)
+
 
         """ If message only consist of bot mention, bot will reply with current prefix """
 
