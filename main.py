@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 import json
 import os
-#Pzdr dla prawilnych mordeczek
+
 
 def get_prefix(ctx, message: discord.Message):
     """ Gets prefix for each defined server """
